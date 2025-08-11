@@ -4,6 +4,7 @@
   "private": true,
   "description": "Prosty timer Pomodoro dla Raycast.",
   "scripts": {
+    "build": "npx @raycast/api@latest build --no-emoji --non-interactive",
     "check": "tsc --noEmit"
   },
   "dependencies": {
@@ -29,8 +30,4 @@
       }
     ]
   }
-  "scripts": {
-  "build": "npx @raycast/api@latest build --no-emoji --non-interactive",
-  "check": "tsc --noEmit"
-}
 }
