@@ -29,4 +29,8 @@
       }
     ]
   }
+  "scripts": {
+  "build": "npx @raycast/api@latest build --no-emoji --non-interactive",
+  "check": "tsc --noEmit"
+}
 }
