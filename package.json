@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Prosty timer Pomodoro dla Raycast.",
-  "type": "module",
   "scripts": {
-    "dev": "ray dev",
-    "build": "ray build",
     "check": "tsc --noEmit"
   },
   "dependencies": {
@@ -19,7 +16,7 @@
   "raycast": {
     "schemaVersion": 2,
     "title": "Pomodoro",
-    "description": "Startuj i prowadź sesję Pomodoro w jednym oknie.",
+    "description": "Startuj i prowadź sesję Pomodoro.",
     "author": "You",
     "categories": ["productivity"],
     "commands": [
@@ -30,8 +27,6 @@
         "mode": "view",
         "entry": "src/pomodoro.tsx"
       }
-    ],
-    "permissions": [],
-    "preferences": []
+    ]
   }
 }
