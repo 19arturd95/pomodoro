@@ -6,30 +6,28 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: npm ci || npm install
+      - run: npx tsc --noEmit
 
-      - name: Install dependencies
-        run: npm install
+      - name: Show file tree
+        run: ls -la && echo && ls -la src || true
 
-      - name: Install Raycast CLI
-        run: npm install -g @raycast/api
+      - name: Show package.json
+        run: cat package.json
 
-      - name: Build extension
-        run: ray build
+      - name: Raycast build
+        run: npx @raycast/api@latest build --no-emoji --non-interactive
 
       - name: Archive build output
-        run: tar -czvf extension-build.tar.gz dist
+        run: tar -czvf extension-build.tar.gz dist || echo "No dist produced"
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: raycast-extension-build
           path: extension-build.tar.gz
